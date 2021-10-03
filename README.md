@@ -3,7 +3,7 @@ A discord bot that sends you to Brazil
 
 Add it with [this](https://discordapp.com/oauth2/authorize?client_id=893785085285924864&scope=bot&permissions=0)
 
-Commands:\n
+Commands:
 (default prefix is "!")
 * !help : You get it
 * !brazil @user : Send user to Brazil
