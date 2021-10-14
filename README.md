@@ -5,7 +5,7 @@ Add it [here](https://discordapp.com/oauth2/authorize?client_id=8937850852859248
 
 By default there is no permission role set, meaning everyone has access to the bot, so I recomend to set that up first.
 
-Commands:
+### Commands:
 (default prefix is "*")
 * \*help : You get it
 * \*brazil @user : Send user to Brazil
