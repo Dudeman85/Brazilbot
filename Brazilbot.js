@@ -10,7 +10,7 @@ const { Permissions } = require('discord.js');
 const authToken = process.env['TOKEN']
 
 //Special permissions for members
-const specialAdmin = ["209821797200297984", "233844862523408385"]
+const specialAdmin = ["209821797200297984"]
 const unbrazillable = ["893785085285924864"]
 const notAllowedToBrazil = ["443972982906421250"]
 
