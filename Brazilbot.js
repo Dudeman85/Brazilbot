@@ -10,7 +10,7 @@ const { Permissions } = require('discord.js');
 const authToken = process.env['TOKEN']
 
 //Special permissions for members
-const specialAdmin = ["209821797200297984"]
+const specialAdmin = ["209821797200297984", "233844862523408385"]
 const unbrazillable = ["893785085285924864"]
 const notAllowedToBrazil = ["443972982906421250"]
 
@@ -37,7 +37,7 @@ var brazilled = {}
 //Goddamn mess of permisson checks.
 //Basically if the author is and admin or special admin or has the use role or the use role permits everyone (no role) and the user is not blacklisted from using Brazilbot this will return true.
 function CheckPermission(msg){
-  return !notAllowedToBrazil.includes(msg.author.id.toString()) && (msg.member.hasPermission("ADMINISTRATOR") || specialAdmin.includes(msg.author.id.toString()) || msg.member.roles.cache.some(role => role.name.toLowerCase() === permissionRole) || permissionRole === "")
+  return !notAllowedToBrazil.includes(msg.author.id.toString()) && (msg.member.hasPermission("ADMINISTRATOR") || specialAdmin.includes(msg.author.id.toString()) || msg.member.roles.cache.some(role => role.name.toLowerCase() === permissionRole[msg.guild]) || permissionRole[msg.guild] === "")
 }
 
 client.on("voiceStateUpdate", function(oldMember, newMember){
@@ -140,11 +140,11 @@ client.on("message", msg => {
     //Skip standard permission check and only allow admins access
     if(msg.member.hasPermission("ADMINISTRATOR") || specialAdmin.includes(msg.author.id.toString())){
       if(msg.content.includes(prefix[guild] + "permissionrole ")){
-        permissionRole = msg.content.replace(prefix[guild] + "permissionrole ", "").toLowerCase()
+        permissionRole[guild] = msg.content.replace(prefix[guild] + "permissionrole ", "").toLowerCase()
         db.set("dPermissionRole", permissionRole)
-        msg.channel.send("Usage permission role set to \"" + permissionRole + "\"")
+        msg.channel.send("Usage permission role set to \"" + permissionRole[guild] + "\"")
       }else{
-        permissionRole = ""
+        permissionRole[guild] = ""
         db.set("dPermissionRole", permissionRole)
         msg.channel.send("Usage permission role removed")
       }
